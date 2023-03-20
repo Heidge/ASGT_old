@@ -1,0 +1,148 @@
+.super-container{
+    background-color: white;
+}
+
+.btn-primary{
+    background-color: #8f0b3b;
+    border-color: #8f0b3b;
+}
+
+.btn-outline-primary{
+    color: #8f0b3b;
+    border-color: #8f0b3b;
+}
+
+
+.btn-primary:hover{
+    background-color: #073674;
+    border-color: #073674;
+}
+
+.btn-outline-primary:hover{
+    background-color: #073674;
+    border-color: #073674;
+}
+
+.errorlist{
+    margin-bottom: 10px;
+}
+
+.a-tournaments{
+    text-decoration: none;
+}
+
+.player{
+    list-style-type: none;
+}
+
+.bb{
+    border-color:#073674 !important;
+}
+
+.tb{
+    border-color:#8f0b3b !important;
+}
+
+.tournament-detail{
+    list-style-type: none;
+}
+
+.btn-update{
+    width: 10rem !important;
+}
+
+.btn-return-tournament{
+    width: 10rem !important;
+    background-color: #073674;
+    border-color: #073674;
+}
+
+.btn-link{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-link:hover{
+    color: white;
+}
+
+.navbar-header:hover{
+    text-decoration: underline;
+}
+
+.btn-create{
+    width: 20rem !important;
+    height: 5rem !important;
+    font-size: x-large;
+}
+
+.width-li{
+    width: 20rem !important;
+}
+
+.round2-m1-margin{
+    margin-top: 75px;
+}
+
+.round2-m2-margin{
+    margin-top: 125px;
+}
+
+.finale-margin{
+    margin-top: 175px;
+}
+
+.btn-round-2{
+    margin-top: 65px;
+}
+
+.btn-round-finale{
+    margin-top: 165px;
+}
+
+.tb-input{
+    border: 0.5px solid #8f0b3b;
+    text-align: center;
+}
+
+.bb-input{
+    border: 0.5px solid #073674;
+    text-align: center;
+}
+
+.winner-display{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-link-connect{
+    text-decoration: none;
+    border-color: #8f0b3b;
+    text-decoration: none;
+}
+
+.btn-link-connect:hover{
+    color: white !important;
+    border-color: #073674;
+    background-color: #073674;
+}
+
+.btn-link-underline{
+    text-decoration: none;
+    color: #8f0b3b;
+}
+
+.btn-link-underline:hover{
+    color: white !important;
+}
+
+.btn-outline-secondary{
+    background-color: #8f0b3b;
+    color : white !important;
+}
+
+.btn-outline-secondary:hover{
+    background-color: #073674;
+}
