@@ -74,18 +74,17 @@ def tournament_create(request):
     if request.method == 'POST':
         tournament_form = TournamentForm(request.POST)
         round1_tournament = Round1()
-        tournament_players = [tournament_form.player1, tournament_form.player2, tournament_form.player3, tournament_form.player4, tournament_form.player5, tournament_form.player6, tournament_form.player7, tournament_form.player8]
-
-        #création d'une liste des joueurs 
         if tournament_form.is_valid():
+            
+            tournament_infos = tournament_form.cleaned_data
             tournament_form = tournament_form.save()
+            tournament_players = [tournament_infos['player1'], tournament_infos['player2'], tournament_infos['player3'], tournament_infos['player4'], tournament_infos['player5'], tournament_infos['player6'], tournament_infos['player7'], tournament_infos['player8']]
             round_players = [round1_tournament.player1, round1_tournament.player2, round1_tournament.player3, round1_tournament.player4, round1_tournament.player5, round1_tournament.player6, round1_tournament.player7, round1_tournament.player8]
-
-            #tant que la liste tournament_player n'est pas nulle, on ajoute en random les joueurs dans round_player
             while len(tournament_players) > 0:
                 round_players[i] = random.choice(tournament_players)
                 tournament_players.remove(round_players[i])
-                i += 1
+                setattr(round1_tournament, 'player{}'.format(i + 1), round_players[i])
+                i += 1     
             round1_tournament.save()
             return redirect('tournament-detail', tournament_form.id)
     else:
