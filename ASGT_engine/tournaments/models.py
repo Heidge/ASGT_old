@@ -150,7 +150,7 @@ class Tournament(models.Model):
 class Round1(models.Model):
 
     def __str__(self):
-        return f'{self.round_number}'
+        return f'{self.tournament}'
 
     tournament = models.ForeignKey(
         Tournament,

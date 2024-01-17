@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from tournaments.models import Tournament, User, Games, Round1
-from tournaments.forms import ContactUsForm, TournamentForm
+from tournaments.forms import ContactUsForm, TournamentForm, Round1Form
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.contrib import messages
@@ -64,9 +64,17 @@ def contact_ok(request):
 
 def tournament_detail(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
+    round1 = Round1.objects.get(tournament=tournament_id)
     game = Games.objects.get(game_name=tournament.game)
 
-    return render(request, 'tournaments/tournament_detail.html', {'tournament': tournament, 'game': game})
+    if request.method == 'POST':
+        round1_form = Round1Form(request.POST)
+        if round1_form.is_valid():
+            round1_form.save()
+    else:
+        round1_form = Round1Form()
+
+    return render(request, 'tournaments/tournament_detail.html', {'tournament': tournament, 'game': game, 'round1': round1, 'round1_form': round1_form})
 
 @login_required
 def tournament_create(request):
@@ -78,6 +86,7 @@ def tournament_create(request):
             
             tournament_infos = tournament_form.cleaned_data
             tournament_form = tournament_form.save()
+            round1_tournament.tournament = tournament_form
             tournament_players = [tournament_infos['player1'], tournament_infos['player2'], tournament_infos['player3'], tournament_infos['player4'], tournament_infos['player5'], tournament_infos['player6'], tournament_infos['player7'], tournament_infos['player8']]
             round_players = [round1_tournament.player1, round1_tournament.player2, round1_tournament.player3, round1_tournament.player4, round1_tournament.player5, round1_tournament.player6, round1_tournament.player7, round1_tournament.player8]
             while len(tournament_players) > 0:

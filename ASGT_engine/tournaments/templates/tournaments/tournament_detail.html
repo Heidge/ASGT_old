@@ -29,53 +29,57 @@
 <div class="container mt-5">
   <div class="row mt-4">
     <div class="col text-center">
+      <form action="" method="post" novalidate>
       <h2><u>ROUND 1</u></h2>
       <div class="d-flex justify-content-center">
-        <ul class="p-0">
-          <div class="my-4">
-            <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m1-p1" for="r1-m1-p1"><strong>{{ tournament.player1 }}</strong></label>
-              <input class="w-25 tb-input" id="score-r1-m1-p1" type="number" name="score" value="{{ score.player1 }}">
-            </li>
-            <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m1-p2" for="r1-m1-p1"><strong>{{ tournament.player2 }}</strong></label>
-              <input class="w-25 tb-input" id="score-r1-m1-p2" type="number" name="score" value="{{ score.player1 }}">
-            </li>
-          </div>
-          <div class="my-4">
-            <li
-              class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m2-p3" for="r1-m1-p1"><strong>{{ tournament.player3 }}</strong></label>
-              <input class="w-25 tb-input" id="score-r1-m2-p3" type="number" name="score" value="{{ score.player3 }}">
-            </li>
-            <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m2-p4" for="r1-m1-p1"><strong>{{ tournament.player4 }}</strong></label>
-              <input class="w-25 tb-input" id="score-r1-m2-p4" type="number" name="score" value="{{ score.player4 }}">
-            </li>
-          </div class="my-4">
-          <div>
-            <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m3-p5" for="r1-m1-p1"><strong>{{ tournament.player5 }}</strong></label>
-              <input class="w-25 bb-input" id="score-r1-m3-p5" type="number" name="score" value="{{ score.player5 }}">
-            </li>
-            <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m3-p6" for="r1-m1-p1"><strong>{{ tournament.player6 }}</strong></label>
-              <input class="w-25 bb-input" id="score-r1-m3-p6" type="number" name="score" value="{{ score.player6 }}">
-            </li>
-          </div>
-          <div class="my-4">
-            <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m4-p7" for="r1-m1-p1"><strong>{{ tournament.player7 }}</strong></label>
-              <input class="w-25 bb-input" id="score-r1-m4-p7" type="number" name="score" value="{{ score.player7 }}">
-            </li>
-            <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
-              <label class="ps-4" id="player-r1-m4-p8" for="r1-m1-p1"><strong>{{ tournament.player8 }}</strong></label>
-              <input class="w-25 bb-input" id="score-r1-m4-p8" type="number" name="score" value="{{ score.player8 }}">
-            </li>
-          </div>
-        </ul>
+          <ul class="p-0">
+            <div class="my-4">
+              
+              {% csrf_token %}
+              <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m1-p1" for="r1-m1-p1"><strong>{{ round1.player1 }}</strong></label>
+                  {{ round1_form.player1_score }}
+              </li>
+              <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m1-p2" for="r1-m1-p1"><strong>{{ round1.player2 }}</strong></label>
+                  {{ round1_form.player2_score }}              
+              </li>
+            </div>
+            <div class="my-4">
+              <li
+                class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m2-p3" for="r1-m1-p1"><strong>{{ round1.player3 }}</strong></label>
+                  {{ round1_form.player3_score }}              
+              </li>
+              <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m2-p4" for="r1-m1-p1"><strong>{{ round1.player4 }}</strong></label>
+                  {{ round1_form.player4_score }}              
+              </li>
+            </div class="my-4">
+            <div>
+              <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m3-p5" for="r1-m1-p1"><strong>{{ round1.player5 }}</strong></label>
+                  {{ round1_form.player5_score }}              
+              </li>
+              <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m3-p6" for="r1-m1-p1"><strong>{{ round1.player6 }}</strong></label>
+                  {{ round1_form.player6_score }}              
+              </li>
+            </div>
+            <div class="my-4">
+              <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m4-p7" for="r1-m1-p1"><strong>{{ round1.player7 }}</strong></label>
+                  {{ round1_form.player7_score }}              
+              </li>
+              <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
+                <label class="ps-4" id="player-r1-m4-p8" for="r1-m1-p1"><strong>{{ round1.player8 }}</strong></label>
+                  {{ round1_form.player8_score }}             
+              </li>
+            </div>
+          </ul>
       </div>
-      <input type="submit" class="btn btn-primary" onclick="DefinePlayersR2()" value="Verrouiller le round">
+      <input type="submit" class="btn btn-primary" value="Verrouiller le round">
+      </form> 
     </div>
     <div class="col text-center">
       <h2><u>DEMI-FINALES</u></h2>
