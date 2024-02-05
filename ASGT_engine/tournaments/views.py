@@ -39,7 +39,6 @@ def tournament(request):
 
     return render(request, 'tournaments/tournaments.html', {'tournaments': tournaments, 'game_image': game_image})
 
-
 def contact(request):
 
     if request.method == 'POST':
@@ -66,12 +65,14 @@ def tournament_detail(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
     round1 = Round1.objects.get(tournament=tournament_id)
     game = Games.objects.get(game_name=tournament.game)
-
+    i = 0
     if request.method == 'POST':
         round1_form = Round1Form(request.POST)
         if round1_form.is_valid():
             cd = round1_form.cleaned_data
-            round1.player1_score = cd['player1_score']
+            for x in cd.values():
+                setattr(round1, 'player{}_score'.format(i + 1), x)
+                i += 1
             round1.save()
     else:
         round1_form = Round1Form()

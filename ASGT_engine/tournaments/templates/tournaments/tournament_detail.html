@@ -38,42 +38,75 @@
               {% csrf_token %}
               <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m1-p1" for="r1-m1-p1"><strong>{{ round1.player1 }}</strong></label>
+                {% if round1.player1 != 'NULL' %}
+                  {{ round1.player1_score }}
+                {% elif round1.player1 == 'NULL' %}
                   {{ round1_form.player1_score }}
+                {% endif %}
+                  
               </li>
               <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m1-p2" for="r1-m1-p1"><strong>{{ round1.player2 }}</strong></label>
-                  {{ round1_form.player2_score }}              
+                {% if round1.player2 != 'NULL' %}
+                  {{ round1.player2_score }}
+                {% elif round1.player2 == 'NULL' %}
+                  {{ round1_form.player2_score }}
+                {% endif %}           
               </li>
             </div>
             <div class="my-4">
               <li
                 class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m2-p3" for="r1-m1-p1"><strong>{{ round1.player3 }}</strong></label>
-                  {{ round1_form.player3_score }}              
+                {% if round1.player3 != 'NULL' %}
+                  {{ round1.player3_score }}
+                {% elif round1.player3 == 'NULL' %}
+                  {{ round1_form.player3_score }}
+                {% endif %}           
               </li>
               <li class="d-flex justify-content-between player tb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m2-p4" for="r1-m1-p1"><strong>{{ round1.player4 }}</strong></label>
-                  {{ round1_form.player4_score }}              
+                {% if round1.player4 != 'NULL' %}
+                  {{ round1.player4_score }}
+                {% elif round1.player4 == 'NULL' %}
+                  {{ round1_form.player4_score }}
+                {% endif %}           
               </li>
             </div class="my-4">
             <div>
               <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m3-p5" for="r1-m1-p1"><strong>{{ round1.player5 }}</strong></label>
-                  {{ round1_form.player5_score }}              
+                {% if round1.player5 != 'NULL' %}
+                  {{ round1.player5_score }}
+                {% elif round1.player5 == 'NULL' %}
+                  {{ round1_form.player5_score }}
+                {% endif %}          
               </li>
               <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m3-p6" for="r1-m1-p1"><strong>{{ round1.player6 }}</strong></label>
-                  {{ round1_form.player6_score }}              
+                {% if round1.player6 != 'NULL' %}
+                  {{ round1.player6_score }}
+                {% elif round1.player6 == 'NULL' %}
+                  {{ round1_form.player6_score }}
+                {% endif %}            
               </li>
             </div>
             <div class="my-4">
               <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m4-p7" for="r1-m1-p1"><strong>{{ round1.player7 }}</strong></label>
-                  {{ round1_form.player7_score }}              
+                {% if round1.player7 != 'NULL' %}
+                  {{ round1.player7_score }}
+                {% elif round1.player7 == 'NULL' %}
+                  {{ round1_form.player7_score }}
+                {% endif %}          
               </li>
               <li class="d-flex justify-content-between player bb text-decoration-none border border-3 rounded-3 m-2 width-li">
                 <label class="ps-4" id="player-r1-m4-p8" for="r1-m1-p1"><strong>{{ round1.player8 }}</strong></label>
-                  {{ round1_form.player8_score }}             
+                {% if round1.player8 != 'NULL' %}
+                  {{ round1.player8_score }}
+                {% elif round1.player8 == 'NULL' %}
+                  {{ round1_form.player8_score }}
+                {% endif %}            
               </li>
             </div>
           </ul>
