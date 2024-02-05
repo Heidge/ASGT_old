@@ -70,7 +70,9 @@ def tournament_detail(request, tournament_id):
     if request.method == 'POST':
         round1_form = Round1Form(request.POST)
         if round1_form.is_valid():
-            round1_form.save()
+            cd = round1_form.cleaned_data
+            round1.player1_score = cd['player1_score']
+            round1.save()
     else:
         round1_form = Round1Form()
 
