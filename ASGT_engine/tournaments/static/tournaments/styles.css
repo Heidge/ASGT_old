@@ -123,10 +123,13 @@
     text-decoration: none;
 }
 
-.btn-link-connect:hover{
-    color: white !important;
+.btn-link-connect:hover {
     border-color: #073674;
     background-color: #073674;
+}
+
+.btn-link-connect:hover .btn-link-underline {
+    color: white !important;
 }
 
 .btn-link-underline{
