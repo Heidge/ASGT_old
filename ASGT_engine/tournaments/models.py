@@ -255,117 +255,126 @@ class Round1(models.Model):
         blank=False,
         null=True)
     
-    """
-class Round1(models.Model):
-    tournament = models.fields.CharField(max_length=20)
-    player1 = models.fields.CharField(max_length=20)
-    player2 = models.fields.CharField(max_length=20)
-    player3 = models.fields.CharField(max_length=20)
-    player4 = models.fields.CharField(max_length=20)
-    player5 = models.fields.CharField(max_length=20)
-    player6 = models.fields.CharField(max_length=20)
-    player7 = models.fields.CharField(max_length=20)
-    player8 = models.fields.CharField(max_length=20)
-    winner1 = models.fields.CharField(max_length=20)
-    winner2 = models.fields.CharField(max_length=20)
-    winner3 = models.fields.CharField(max_length=20)
-    winner4 = models.fields.CharField(max_length=20)
-    created_at = models.fields.DateTimeField(
-        default=timezone.now(),
-        verbose_name="Créé le"
-        )
-    updated_at = models.fields.DateTimeField(auto_now=True)
+    open = models.fields.BooleanField(
+        verbose_name="Round ouvert",
+        blank=False,
+        default=True
+    )
 
 class Round2(models.Model):
-    tournament = models.fields.CharField(max_length=20)
-    player1 = models.fields.CharField(max_length=20)
-    player2 = models.fields.CharField(max_length=20)
-    player3 = models.fields.CharField(max_length=20)
-    player4 = models.fields.CharField(max_length=20)
-    winner1 = models.fields.CharField(max_length=20)
-    winner2 = models.fields.CharField(max_length=20)
+
+    def __str__(self):
+        return str(self.id)
+
+    tournament = models.ForeignKey(
+        Tournament,
+        on_delete=models.SET_NULL,
+        verbose_name="Tournoi",
+        blank=False,
+        null=True
+    )
+    
     created_at = models.fields.DateTimeField(
         default=timezone.now(),
         verbose_name="Créé le"
         )
+    
     updated_at = models.fields.DateTimeField(auto_now=True)
-
-class Finale(models.Model):
-    tournament = models.fields.CharField(max_length=20)
-    player1 = models.fields.CharField(max_length=20)
-    player2 = models.fields.CharField(max_length=20)
-    winner = models.fields.CharField(max_length=20)
-    created_at = models.fields.DateTimeField(
-        default=timezone.now(),
-        verbose_name="Créé le"
-        )
-    updated_at = models.fields.DateTimeField(auto_now=True)
-
-class Match(models.Model):
-    tournament = models.fields.CharField(max_length=20)
-    round = models.fields.CharField(max_length=20)
-    player1 = models.fields.CharField(max_length=20)
-    player2 = models.fields.CharField(max_length=20)
-    score1 = models.fields.CharField(max_length=20)
-    score2 = models.fields.CharField(max_length=20)
-    winner = models.fields.CharField(max_length=20)
-
-
-    ancienne version des players :
-    player1 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL, #set_null car si on utilise CASCADE ça supprimera tout le tournoi
+    
+    player1 = models.fields.CharField(
+        max_length=20,
         verbose_name="Joueur 1",
-        related_name='+'
-        )
-    player2 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL,
+        blank=False,
+        null=True)
+    
+    player1_score = models.fields.IntegerField(
+        verbose_name="Score joueur 1",
+        blank=False,
+        null=True)
+    
+    player2 = models.fields.CharField(
+        max_length=20,
         verbose_name="Joueur 2",
-        related_name='+'
-        )
-    player3 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL,
+        blank=False,
+        null=True)
+    
+    player2_score = models.fields.IntegerField(
+        verbose_name="Score joueur 2",
+        blank=False,
+        null=True)
+
+    player3 = models.fields.CharField(
+        max_length=20,
         verbose_name="Joueur 3",
-        related_name='+'
-        )
-    player4 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL,
+        blank=False,
+        null=True)
+    
+    player3_score = models.fields.IntegerField(
+        verbose_name="Score joueur 3",
+        blank=False,
+        null=True)
+
+    player4 = models.fields.CharField(
+        max_length=20,
         verbose_name="Joueur 4",
-        related_name='+'
-        )
-    player5 = models.ForeignKey(
-        User,
-        null=True,
+        blank=False,
+        null=True)
+    
+    player4_score = models.fields.IntegerField(
+        verbose_name="Score joueur 4",
+        blank=False,
+        null=True)
+    
+    open = models.fields.BooleanField(
+        verbose_name="Round ouvert",
+        blank=False,
+        default=True
+    )
+    
+class Round3(models.Model):
+
+    def __str__(self):
+        return str(self.id)
+
+    tournament = models.ForeignKey(
+        Tournament,
         on_delete=models.SET_NULL,
-        verbose_name="Joueur 5",
-        related_name='+'
+        verbose_name="Tournoi",
+        blank=False,
+        null=True
+    )
+    
+    created_at = models.fields.DateTimeField(
+        default=timezone.now(),
+        verbose_name="Créé le"
         )
-    player6 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL,
-        verbose_name="Joueur 6",
-        related_name='+'
-        )
-    player7 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL,
-        verbose_name="Joueur 7",
-        related_name='+'
-        )
-    player8 = models.ForeignKey(
-        User,
-        null=True,
-        on_delete=models.SET_NULL,
-        verbose_name="Joueur 8",
-        related_name='+'
-        )
-"""
+    
+    updated_at = models.fields.DateTimeField(auto_now=True)
+    
+    player1 = models.fields.CharField(
+        max_length=20,
+        verbose_name="Joueur 1",
+        blank=False,
+        null=True)
+    
+    player1_score = models.fields.IntegerField(
+        verbose_name="Score joueur 1",
+        blank=False,
+        null=True)
+    
+    player2 = models.fields.CharField(
+        max_length=20,
+        verbose_name="Joueur 2",
+        blank=False,
+        null=True)
+    
+    player2_score = models.fields.IntegerField(
+        verbose_name="Score joueur 2",
+        blank=False,
+        null=True)
+    
+    open = models.fields.BooleanField(
+        verbose_name="Round ouvert",
+        blank=False,
+        default=True
+    )
