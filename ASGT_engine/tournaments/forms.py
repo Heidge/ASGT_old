@@ -1,6 +1,5 @@
 from django import forms
-from tournaments.models import Tournament,Games
-from django import forms
+from tournaments.models import Tournament, Games, Round1, Round2, Round3
 
 class ContactUsForm(forms.Form):
 
@@ -147,26 +146,123 @@ class TournamentForm(forms.ModelForm):
         })
     )
 
+class Round1Form(forms.ModelForm):
+    class Meta:
+        model = Round1
+        fields = ['player1_score', 'player2_score', 'player3_score', 'player4_score',
+                  'player5_score', 'player6_score', 'player7_score', 'player8_score',
+                  ]
 
-"""
-class TournamentScoreFormRound1(forms.Form):
-    scoreP1 = forms.IntegerField(label='', required=True)
-    scoreP2 = forms.IntegerField(label='', required=True)
-    scoreP3 = forms.IntegerField(label='', required=True)
-    scoreP4 = forms.IntegerField(label='', required=True)
-    scoreP5 = forms.IntegerField(label='', required=True)
-    scoreP6 = forms.IntegerField(label='', required=True)
-    scoreP7 = forms.IntegerField(label='', required=True)
-    scoreP8 = forms.IntegerField(label='', required=True)
-class TournamentScoreFormRound2(forms.Form):
-    scoreP1 = forms.IntegerField(label='', required=True)
-    scoreP2 = forms.IntegerField(label='', required=True)
-    scoreP3 = forms.IntegerField(label='', required=True)
-    scoreP4 = forms.IntegerField(label='', required=True)
-class TournamentScoreFormFinale(forms.Form):
-    scoreP1 = forms.IntegerField(label='', required=True)
-    scoreP2 = forms.IntegerField(label='', required=True)
-class MatchForm(forms.Form):
-    scoreP1 = forms.IntegerField(label='Test', required=True)
-    scoreP2 = forms.IntegerField(label='Test', required=True)
-"""
+
+    player1_score = forms.IntegerField(
+        label='Score J1',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player2_score = forms.IntegerField(
+        label='Score J2',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player3_score = forms.IntegerField(
+        label='Score J3',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player4_score = forms.IntegerField(
+        label='Score J4',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player5_score = forms.IntegerField(
+        label='Score J5',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player6_score = forms.IntegerField(
+        label='Score J6',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player7_score = forms.IntegerField(
+        label='Score J7',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player8_score = forms.IntegerField(
+        label='Score J8',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+
+class Round2Form(forms.ModelForm):
+    class Meta:
+        model = Round2
+        fields = ['player1_score', 'player2_score', 'player3_score', 'player4_score']
+
+
+    player1_score = forms.IntegerField(
+        label='Score J1',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player2_score = forms.IntegerField(
+        label='Score J2',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player3_score = forms.IntegerField(
+        label='Score J3',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    player4_score = forms.IntegerField(
+        label='Score J4',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+
+class Round3Form(forms.ModelForm):
+    class Meta:
+        model = Round3
+        fields = ['player1_score', 'player2_score']
+
+    player1_score = forms.IntegerField(
+        label='Score J1',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )
+    
+    player2_score = forms.IntegerField(
+        label='Score J2',
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-control-sm'
+        })
+    )

@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from tournaments.models import Tournament, User, Games
-from tournaments.forms import ContactUsForm, TournamentForm
+from tournaments.models import Tournament, User, Games, Round1, Round2, Round3
+from tournaments.forms import ContactUsForm, TournamentForm, Round1Form
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from tournaments import match_calc
+import random
 import json
 
 
@@ -34,7 +36,6 @@ def tournament(request):
 
     return render(request, 'tournaments/tournaments.html', {'tournaments': tournaments, 'game_image': game_image})
 
-
 def contact(request):
 
     if request.method == 'POST':
@@ -59,16 +60,42 @@ def contact_ok(request):
 
 def tournament_detail(request, tournament_id):
     tournament = Tournament.objects.get(id=tournament_id)
+    round1 = Round1.objects.get(tournament=tournament_id)
     game = Games.objects.get(game_name=tournament.game)
+    
+    if request.method == 'POST':
+        round_form = match_calc.match_calc(request, tournament_id)
+    else:
+        round_form = Round1Form()
 
-    return render(request, 'tournaments/tournament_detail.html', {'tournament': tournament, 'game': game})
+    return render(request, 'tournaments/tournament_detail.html', {'tournament': tournament, 'game': game, 'round1': round1, 'round1_form': round_form})
 
 @login_required
 def tournament_create(request):
+    i = 0
     if request.method == 'POST':
         tournament_form = TournamentForm(request.POST)
+        round1_tournament = Round1()
+        round2_tournament = Round2()
+        round3_tournament = Round3()
         if tournament_form.is_valid():
+            tournament_infos = tournament_form.cleaned_data
+            
             tournament_form = tournament_form.save()
+            round1_tournament.tournament = tournament_form
+            round2_tournament.tournament = tournament_form
+            round2_tournament.save()
+            round3_tournament.tournament = tournament_form
+            round3_tournament.save()
+
+            tournament_players = [tournament_infos['player1'], tournament_infos['player2'], tournament_infos['player3'], tournament_infos['player4'], tournament_infos['player5'], tournament_infos['player6'], tournament_infos['player7'], tournament_infos['player8']]
+            round_players = [round1_tournament.player1, round1_tournament.player2, round1_tournament.player3, round1_tournament.player4, round1_tournament.player5, round1_tournament.player6, round1_tournament.player7, round1_tournament.player8]
+            while len(tournament_players) > 0:
+                round_players[i] = random.choice(tournament_players)
+                tournament_players.remove(round_players[i])
+                setattr(round1_tournament, 'player{}'.format(i + 1), round_players[i])
+                i += 1     
+            round1_tournament.save()
             return redirect('tournament-detail', tournament_form.id)
     else:
         tournament_form = TournamentForm()
