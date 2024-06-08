@@ -10,7 +10,7 @@ def signup_page(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)
+            return redirect('homepage')
     return render(request, 'authentication/signup.html', context={'form': form})
 
 def logout_user(request):
