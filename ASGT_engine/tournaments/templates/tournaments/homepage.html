@@ -3,57 +3,52 @@
 
 {% block content %}
 
-<h1 class="d-flex justify-content-center">ASGT, votre site de compétitions personnalisées !</h1>
+<h1 class="d-flex justify-content-center text-center">ASGT, votre site de compétitions personnalisées !</h1>
 
 <div class="row m-5">
-  <div class="col-lg-6 d-flex flex-column justify-content-center">
-    <p>Créez, organisez et administrez vos propres <strong>tournois de jeux-vidéos</strong> entre amis ou entre challengers
-      inconnus avec <strong>ASGT</strong>, le nouveau site de création de tournois personnalisés.</p>
-      <p>Découvrez une application <strong>simple d'utilisation</strong> afin d'affronter vos adversaires, dans de <strong>nombreux formats</strong> et <strong>jeux</strong> !</p>
-      <p><strong>ASGT</strong> c'est également la promesse de deux joueurs-développeurs passionés de <strong>maintenir</strong> et <strong>développer</strong> sur le long terme
-        une application de tournois de jeux-vidéos en ajoutant de <strong>nouveaux jeux</strong> et de <strong>nouveaux formats</strong>.
-      </p>
-      <div class="d-flex justify-content-center mt-2">
-      <button type="button" class="btn-update btn btn-primary"><a class="btn-link" href="{% url 'tournament-list' %}">Créer un tournoi</a></button>
+  <div class="col-12 col-lg-6 d-flex flex-column justify-content-center mb-4 mb-lg-0">
+    <p>Créez, organisez et administrez vos propres <strong>tournois de jeux-vidéos</strong> entre amis ou entre challengers inconnus avec <strong>ASGT</strong>, le nouveau site de création de tournois personnalisés.</p>
+    <p>Découvrez une application <strong>simple d'utilisation</strong> afin d'affronter vos adversaires, dans de <strong>nombreux formats</strong> et <strong>jeux</strong> !</p>
+    <p><strong>ASGT</strong> c'est également la promesse de deux joueurs-développeurs passionés de <strong>maintenir</strong> et <strong>développer</strong> sur le long terme une application de tournois de jeux-vidéos en ajoutant de <strong>nouveaux jeux</strong> et de <strong>nouveaux formats</strong>.</p>
+    <div class="d-flex justify-content-center mt-2">
+      <a href="{% url 'tournament-list' %}" class="btn btn-primary btn-update">Créer un tournoi</a>
     </div>
   </div>
-  <div class="col-lg-6">
-    <img src="{% static 'tournaments/images/Cup - Logo.jpeg' %}" height="300">
+  <div class="col-12 col-lg-6 d-flex justify-content-center">
+    <img src="{% static 'tournaments/images/Cup - Logo.jpeg' %}" class="img-fluid" alt="Cup Logo">
   </div>
 </div>
 
 <div class="row m-5">
-  <div class="col-lg-6">
-    <img src="{% static 'tournaments/images/Game 2 - Logo.png' %}" height="300">
+  <div class="col-12 col-lg-6 d-flex justify-content-center mb-4 mb-lg-0">
+    <img src="{% static 'tournaments/images/Game 2 - Logo.png' %}" class="img-fluid" alt="Game Logo">
   </div>
-  <div class="col-lg-6 d-flex flex-column justify-content-center">
-    <p >Découvrez une liste de <strong>plusieurs jeux</strong> déjà disponibles pour vos tournois !</p>
-    <p><strong>Super Smash Bros Ultimate</strong>, <strong>Counter Strike</strong>, <strong>FIFA</strong>, <strong>Mario Kart</strong> ... Ils sont tous au rendez-vous et ce n'est que le début</p>
+  <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+    <p>Découvrez une liste de <strong>plusieurs jeux</strong> déjà disponibles pour vos tournois !</p>
+    <p><strong>Super Smash Bros Ultimate</strong>, <strong>Counter Strike</strong>, <strong>FIFA</strong>, <strong>Mario Kart</strong> ... Ils sont tous au rendez-vous et ce n'est que le début.</p>
     <p class="mb-5">De nombreux jeux avec leurs <strong>propres formats</strong> feront leur apparition au fur et à mesure du développement du site ASGT, alors <strong>restez à l'affut</strong> !</p>
-    
-      <div class="container d-flex justify-content-center">
-      <button type="button" class="btn-update btn btn-primary mt-5"><a class="btn-link" href="{% url 'tournament-game' %}">Liste des jeux</a></button>
+    <div class="d-flex justify-content-center">
+      <a href="{% url 'tournament-game' %}" class="btn btn-primary btn-update mt-5">Liste des jeux</a>
     </div>
   </div>
 </div>
 
 <div class="row m-5">
-  <div class="col-lg-6 d-flex flex-column justify-content-center">
-    <p>Joueuses, joueurs, de <strong>nombreuses améliorations</strong> sont à prévoir et à réaliser et celles-ci ne peuvent voir le jour sans <strong>vos précieux retours</strong>, 
-      alors n'hésitez pas à contacter l'équipe ASGT pour partager vos <strong>feedbacks</strong></p>
-      <p>Ajouts et modifications prévues :</p>
-      <ul>
-        <li>Ajout de <strong>nouveaux jeux</strong></li>
-        <li>Ajout de <strong>nouveaux formats de compétition</strong></li>
-        <li>Amélioration de l'<strong>expérience utilisateur</strong> (fonctionnalités, ergonomie ...)</li>
-      </ul>
-      <p>Et bien plus ... !</p>
-      <div class="d-flex justify-content-center">
-      <button type="button" class="btn-update btn btn-primary"><a class="btn-link" href="{% url 'contact' %}">Nous contacter</a></button>
+  <div class="col-12 col-lg-6 d-flex flex-column justify-content-center mb-4 mb-lg-0">
+    <p>Joueuses, joueurs, de <strong>nombreuses améliorations</strong> sont à prévoir et à réaliser et celles-ci ne peuvent voir le jour sans <strong>vos précieux retours</strong>, alors n'hésitez pas à contacter l'équipe ASGT pour partager vos <strong>feedbacks</strong></p>
+    <p>Ajouts et modifications prévues :</p>
+    <ul>
+      <li>Ajout de <strong>nouveaux jeux</strong></li>
+      <li>Ajout de <strong>nouveaux formats de compétition</strong></li>
+      <li>Amélioration de l'<strong>expérience utilisateur</strong> (fonctionnalités, ergonomie ...)</li>
+    </ul>
+    <p>Et bien plus ... !</p>
+    <div class="d-flex justify-content-center">
+      <a href="{% url 'contact' %}" class="btn btn-primary btn-update">Nous contacter</a>
     </div>
   </div>
-  <div class="col-lg-6">
-    <img src="{% static 'tournaments/images/Multigames - Logo.jpeg' %}" height="300">
+  <div class="col-12 col-lg-6 d-flex justify-content-center">
+    <img src="{% static 'tournaments/images/Multigames - Logo.jpeg' %}" class="img-fluid" alt="Multigames Logo">
   </div>
 </div>
 
