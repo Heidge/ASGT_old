@@ -39,7 +39,6 @@ def tournament(request):
 def contact(request):
 
     if request.method == 'POST':
-        # créer une instance de notre formulaire et le remplir avec les données POST
         form = ContactUsForm(request.POST)
 
         if form.is_valid():
@@ -72,32 +71,67 @@ def tournament_detail(request, tournament_id):
 
 @login_required
 def tournament_create(request):
-    i = 0
+    """
+    Crée un nouveau tournoi et attribue les joueurs aux tours.
+
+    Cette fonction permet à un utilisateur authentifié de créer un nouveau tournoi,
+    de sélectionner les joueurs pour chaque tour et de sauvegarder ces informations
+    dans la base de données.
+
+    Args:
+        request (HttpRequest): L'objet HttpRequest contenant les données envoyées par l'utilisateur.
+
+    Returns:
+        HttpResponse: Redirige vers la page de détail du tournoi créé ou renvoie le formulaire
+                      de création de tournoi si la requête n'est pas une requête POST.
+    """
+
+    i = 0  # Compteur pour attribuer les joueurs aux tours
+
     if request.method == 'POST':
+        # Initialise le formulaire de création de tournoi avec les données POST
         tournament_form = TournamentForm(request.POST)
+
+        # Crée des instances pour les trois rounds du tournoi
         round1_tournament = Round1()
         round2_tournament = Round2()
         round3_tournament = Round3()
+
         if tournament_form.is_valid():
+            # Récupère les données nettoyées du formulaire
             tournament_infos = tournament_form.cleaned_data
-            
+
+            # Sauvegarde le formulaire et lie les rounds au tournoi
             tournament_form = tournament_form.save()
             round1_tournament.tournament = tournament_form
             round2_tournament.tournament = tournament_form
-            round2_tournament.save()
             round3_tournament.tournament = tournament_form
+
+            # Sauvegarde les rounds dans la base de données
+            round2_tournament.save()
             round3_tournament.save()
 
-            tournament_players = [tournament_infos['player1'], tournament_infos['player2'], tournament_infos['player3'], tournament_infos['player4'], tournament_infos['player5'], tournament_infos['player6'], tournament_infos['player7'], tournament_infos['player8']]
-            round_players = [round1_tournament.player1, round1_tournament.player2, round1_tournament.player3, round1_tournament.player4, round1_tournament.player5, round1_tournament.player6, round1_tournament.player7, round1_tournament.player8]
+            # Récupère la liste des joueurs du formulaire
+            players_from_form = ['player1', 'player2', 'player3', 'player4', 'player5', 'player6', 'player7', 'player8']
+            tournament_players = [tournament_infos[player] for player in players_from_form]
+
+            # Initialise la liste des joueurs pour les rounds
+            round_players = [getattr(round1_tournament, player) for player in players_from_form]
+
+            # Attribue les joueurs aux rounds jusqu'à épuisement de la liste des joueurs disponibles
             while len(tournament_players) > 0:
                 round_players[i] = random.choice(tournament_players)
                 tournament_players.remove(round_players[i])
                 setattr(round1_tournament, 'player{}'.format(i + 1), round_players[i])
                 i += 1     
+
+            # Sauvegarde le premier round avec les joueurs attribués
             round1_tournament.save()
+
+            # Redirige vers la page de détail du tournoi créé
             return redirect('tournament-detail', tournament_form.id)
     else:
+        # Si la requête n'est pas une requête POST, initialise le formulaire vide
         tournament_form = TournamentForm()
 
     return render(request, 'tournaments/tournament-creation.html', {'form': tournament_form})

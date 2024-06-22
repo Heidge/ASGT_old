@@ -19,6 +19,9 @@ from tournaments import views
 import authentication.views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from authentication.forms import ResetPasswordForm
+
 
 #mettre toutes les urls des pages dans url patterns
 urlpatterns = [
@@ -35,7 +38,11 @@ urlpatterns = [
     path('tournois/<int:tournament_id>/supprimer/', views.tournament_delete, name='tournament-delete'),
     path('connexion/', authentication.views.login_page, name='login'),
     path('deconnexion/', authentication.views.logout_user, name='logout'),
-    path('inscription/', authentication.views.signup_page, name='signup')
+    path('inscription/', authentication.views.signup_page, name='signup'),
+    path('reinitialisatier-motdepasse/', auth_views.PasswordResetView.as_view(template_name='password_reset.html', form_class=ResetPasswordForm),name='password-reset'),
+    path('reinitialisation-motdepasse-ok/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
+    path('reinitialisation-motdepasse-confirmation/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirmation.html'), name='password_reset_confirm'),
+    path('reinitialisation-motdepasse/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

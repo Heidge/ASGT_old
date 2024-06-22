@@ -1,27 +1,24 @@
-{% load static %}
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <!-- required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'tournaments/styles.css' %}" />
-        <script src="{% static 'tournaments/script.js' %}"></script>
-
-
-        <title>ASGT</title>
-    </head>
-    <body>
-            <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                    <div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-black text-decoration-none">
-                        <a href="/accueil">
+<head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'tournaments/styles.css' %}" />
+    <title>ASGT</title>
+</head>
+<body>
+    <div class="page-container">
+        <header class="header">
+            <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <div class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-black text-decoration-none">
+                    <a href="/accueil">
                         <img src="{% static 'tournaments/images/ASGT - Logo.png' %}" alt="asgt-logo" height="50px">
-                        </a>
-                    </div>
+                    </a>
+                </div>
 
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="/accueil" class="navbar-header nav-link mx-2 px-2 link-dark">Accueil</a></li>
@@ -35,40 +32,47 @@
                     {% if user.is_authenticated %}
                     <div class="dropdown">
                         <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="bi bi-person-fill"></i> {{ request.user.username }}
+                            <i class="bi bi-person-fill"></i> {{ request.user.username }}
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Se déconnecter</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Se déconnecter</a></li>
                         </ul>
-                      </div>
+                    </div>
                     {% else %}
                     <button type="button" class="btn btn-link-connect me-2"><a class="btn-link-underline" href="{% url 'login' %}">Se connecter</a></button>
                     <button type="button" class="btn btn-primary"><a class="btn-link" href="{% url 'signup' %}">S'inscrire</a></button>
                     {% endif %}
                 </div>
-                </header>
             </div>
+        </header>
+
+        <div class="content-wrap">
             <div class="container">
                 {% block content %}
                 {% endblock %}
             </div>
-        <!-- JS bootstrap bundle script -->
+        </div>
+
+        <footer class="footer py-3 bg-light">
             <div class="container">
-              <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                <div class="col-md-4 d-flex align-items-center">
-                  <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-                  </a>
-                  <span class="mb-3 mb-md-0 text-muted">&copy; 2023 ASGT, Inc</span>
+                <div class="d-flex flex-wrap justify-content-between align-items-center border-top">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+                        </a>
+                        <span class="mb-3 mb-md-0 text-muted">&copy; 2024 ASGT, Inc</span>
+                    </div>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a class="text-muted" href="https://github.com/Rbrogniez/ASGT"><img src="{% static 'tournaments/images/GitHub - Logo.png' %}" height="40"></a></li>
+                        <li class="ms-3"><a class="text-muted" href="https://twitter.com/"><img src="{% static 'tournaments/images/Twitter - Logo.png' %}" height="30"></a></li>
+                        <li class="ms-3"><a class="text-muted" href="https://Instagram.com/"><img src="{% static 'tournaments/images/Instagram - Logo.png' %}" height="30"></a></li>
+                    </ul>
                 </div>
-                <ul class="list-unstyled">
-                    <a href="https://github.com/Rbrogniez/ASGT"><img src="{% static 'tournaments/images/GitHub - Logo.png' %}" height="40"></a>
-                    <a href="https://twitter.com/"><img src="{% static 'tournaments/images/Twitter - Logo.png' %}" height="30"></a>
-                    <a href="https://Instagram.com/"><img src="{% static 'tournaments/images/Instagram - Logo.png' %}" height="30"></a>
-                  </ul>
-              </footer>
             </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    </body>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
 </html>

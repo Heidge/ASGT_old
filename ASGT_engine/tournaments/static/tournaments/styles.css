@@ -149,3 +149,41 @@
 .btn-outline-secondary:hover{
     background-color: #073674;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
+}
+
+.footer {
+    background-color: #ffffff !important; /* Couleur de fond du footer */
+    width: 100%;
+    margin-top: auto; /* Place le footer en bas */
+}
+
+.footer .list-unstyled {
+    display: flex;
+    gap: 10px; /* Espacement entre les icônes */
+    align-items: center;
+}
+
+.footer .list-unstyled li {
+    list-style: none;
+}
+

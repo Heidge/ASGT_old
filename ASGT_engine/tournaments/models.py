@@ -34,14 +34,22 @@ class Games(models.Model):
     def __str__(self):
         return f'{self.game_name}'
 
-    game_name = models.fields.CharField(max_length=100)
+    game_name = models.fields.CharField(
+        max_length=100
+        )
     created_at = models.fields.DateTimeField(
         default=timezone.now(),
         verbose_name = 'Ajouté le'
         )
-    game_description = models.fields.TextField(max_length=1000)
+    game_description = models.fields.TextField(
+        max_length=1000
+        )
 
-    game_image = models.ImageField(upload_to='games/', blank=True, null=True)
+    game_image = models.ImageField(
+        upload_to='games/', 
+        blank=True, 
+        null=True
+        )
 
 class Tournament(models.Model):
 
@@ -264,7 +272,7 @@ class Round1(models.Model):
 class Round2(models.Model):
 
     def __str__(self):
-        return str(self.id)
+        return str(self.tournament)
 
     tournament = models.ForeignKey(
         Tournament,
@@ -334,7 +342,7 @@ class Round2(models.Model):
 class Round3(models.Model):
 
     def __str__(self):
-        return str(self.id)
+        return str(self.tournament)
 
     tournament = models.ForeignKey(
         Tournament,
