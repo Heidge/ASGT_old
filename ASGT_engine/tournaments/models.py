@@ -292,6 +292,7 @@ class Round2(models.Model):
     player1 = models.fields.CharField(
         max_length=20,
         verbose_name="Joueur 1",
+        default="Vainqueur match 1",
         blank=False,
         null=True)
     
