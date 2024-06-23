@@ -1,14 +1,17 @@
  
 # ASGT
  
-ASGT is a Django application for managing tournaments.
+Introducing ASGT: Your Premier Tournament Management Solution
+
+Are you seeking to streamline tournament organization? Discover ASGT (All Star Game Tournament), the comprehensive application designed to manage and organize tournaments with ease. Developed using Flask, Django, and HTML/CSS, ASGT provides a sophisticated platform that ensures a seamless experience for organizers and participants alike.
+
  
  
 ## Tech Stack
  
-**Client:** HTML, CSS, JavaScript
+**Client:** HTML, CSS, BootStrap, JavaScript
  
-**Server:** Django, Flask
+**Server:** Django, Python
  
  
 ## Run Locally
@@ -16,28 +19,29 @@ ASGT is a Django application for managing tournaments.
 Clone the project
  
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/Heidge/ASGT
 ```
  
 Go to the project directory
  
 ```bash
-  cd my-project
+  cd ASGT
 ```
  
 Install dependencies
  
 ```bash
-  npm install
+  pip install -r requirements.txt
 ```
  
 Start the server
  
 ```bash
-  npm run start
+  cd ASGT_engine
+  Python3 manage.py runserver
 ```
  
- 
+  
 ## Screenshots
  
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
