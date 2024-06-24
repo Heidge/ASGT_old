@@ -55,11 +55,11 @@ If you find any issues or have suggestions for improvements, please open an issu
  
 ## Feedback
  
-If you have any feedback, please reach out to us at fake@fake.com
+
  
  
 ## 🚀 About Us
-I'm a full stack developer...
+
  
  
 ## 🔗 Links
