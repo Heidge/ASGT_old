@@ -134,3 +134,16 @@ MEDIA_URL = '/media/'
 AUTH_USER_MODEL = 'authentication.User'
 
 LOGIN_URL = 'login'
+
+
+if 'RAILWAY_ENVIRONMENT' in os.environ:
+    DEBUG = False
+    ALLOWED_HOSTS = ['*']
+    
+    # Collecte des fichiers statiques
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    
+    # Base de données Railway (si vous utilisez PostgreSQL)
+    if 'DATABASE_URL' in os.environ:
+        import dj_database_url
+        DATABASES['default'] = dj_database_url.parse(os.environ['DATABASE_URL'])
